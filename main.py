@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from pandas import pd
+import pandas as pd
 import joblib
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
@@ -11,8 +11,8 @@ ml_model = {}
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Load the model and threshold when the application starts
-    ml_model['model'] = joblib.load("../models/credit_risk_model.pkl")
-    ml_model['threshold'] = joblib.load("../models/best_threshold.pkl")
+    ml_model['model'] = joblib.load("./models/credit_risk_model.pkl")
+    ml_model['threshold'] = joblib.load("./models/best_threshold.pkl")
     yield
     # Clean up resources if needed when the application shuts down
     ml_model.clear()
@@ -37,7 +37,8 @@ class LoanApplication(BaseModel):
 
 
 @app.post('/predict')
-def predict(data : LoanApplication):
+def predict(data: LoanApplication):
+
     input_df = pd.DataFrame([data.dict()])
 
     probability = ml_model['model'].predict_proba(input_df)[:, 1][0]
@@ -45,9 +46,9 @@ def predict(data : LoanApplication):
     prediction = int(probability >= ml_model["threshold"])
 
     return {
-        "default_probability": probability,
+        "default_probability": float(probability),
         "default_prediction": prediction,
-        "threshold": ml_model["threshold"],
+        "threshold": float(ml_model["threshold"]),
         "Result": "High Risk" if prediction == 1 else "Low Risk"
     }
 
