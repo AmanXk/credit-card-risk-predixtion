@@ -33,3 +33,22 @@ class LoanApplication(BaseModel):
     loan_percent_income: float
     cb_person_default_on_file: str
     cb_person_cred_hist_length: int
+
+
+
+@app.post('/predict')
+def predict(data : LoanApplication):
+    input_df = pd.DataFrame([data.dict()])
+
+    probability = ml_model['model'].predict_proba(input_df)[:, 1][0]
+
+    prediction = int(probability >= ml_model["threshold"])
+
+    return {
+        "default_probability": probability,
+        "default_prediction": prediction,
+        "threshold": ml_model["threshold"],
+        "Result": "High Risk" if prediction == 1 else "Low Risk"
+    }
+
+app.mount("/", StaticFiles(directory="static", html=True), name="static")
