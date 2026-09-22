@@ -484,7 +484,7 @@ Distributed under the **MIT License**. See the repository license file for the f
 
 <div align="center">
 
-**"Risk is a probability. Decisions are a threshold."**
+**"Risk is a probability. Decisions are a threshold"**
 
 <br />
 
