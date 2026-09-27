@@ -478,7 +478,7 @@ Distributed under the **MIT License**. See the repository license file for the f
 
 - Built on the outstanding open-source ecosystem: **FastAPI**, **XGBoost**, **scikit-learn**, **pandas**, **Jupyter**.
 - Dataset: consumer-loan credit-risk benchmark data.
-- Design: "Credit Ledger" console inspired by classic ledgers meets modern risk dashboards.
+- Design: "Credit Ledger" console inspired by classic ledgers meets modern risk dashboards
 
 ---
 
