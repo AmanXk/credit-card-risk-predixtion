@@ -38,11 +38,8 @@ class LoanApplication(BaseModel):
 
 @app.post('/predict')
 def predict(data: LoanApplication):
-
     input_df = pd.DataFrame([data.dict()])
-
     probability = ml_model['model'].predict_proba(input_df)[:, 1][0]
-
     prediction = int(probability >= ml_model["threshold"])
 
     return {
