@@ -490,6 +490,6 @@ Distributed under the **MIT License**. See the repository license file for the f
 
 `FastAPI` · `XGBoost` · `scikit-learn` · `pandas` · `Docker`
 
-<sub>© 2026 Credit Ledger — model estimates for research & demonstration only. Not a lending decision tool.</sub>
+<sub>© 2026 Credit Ledger — model estimates for research & demonstration only. Not a lending decision tool</sub>
 
 </div>
