@@ -355,7 +355,7 @@ flowchart LR
 | --- | --- |
 | `200` | Verdict computed and returned |
 | `422` | Payload failed schema validation |
-| `500` | Unhandled runtime error (e.g., missing model artifact) |
+| `500` | Unhandled runtime error (e.g. missing model artifact) |
 
 ---
 
